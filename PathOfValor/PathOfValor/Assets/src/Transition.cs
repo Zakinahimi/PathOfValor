@@ -17,6 +17,8 @@ public class Transition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnsureLevelDefaults();
+
         passScreen = GameObject.Find("gameCanvas");
         failScreen = GameObject.Find("gameOverCanvas");
         gameEnd = GameObject.Find("gameFinishCanvas");
@@ -75,10 +77,10 @@ public class Transition : MonoBehaviour
     {
         if (lvlindex<5)
         {
-            buttonSound.Play();
+            PlayButtonSound();
             lvlindex++;
             level="Level "+lvlindex.ToString();
-            SceneManager.LoadScene(level);
+            TryLoadScene(level);
         }
         /*else 
         {
@@ -89,18 +91,58 @@ public class Transition : MonoBehaviour
 
     public void retryLevelBT()
     {
-        buttonSound.Play();
-        SceneManager.LoadScene(level);
+        PlayButtonSound();
+        TryLoadScene(level);
     }
    public void MainmenuBT()
     {
-        buttonSound.Play();
-        SceneManager.LoadScene("Main Menu");
+        PlayButtonSound();
+        TryLoadScene("Main Menu");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void EnsureLevelDefaults()
+    {
+        if (string.IsNullOrEmpty(level))
+        {
+            var activeScene = SceneManager.GetActiveScene();
+            level = activeScene.name;
+            lvlindex = activeScene.buildIndex;
+        }
+    }
+
+    private bool TryLoadScene(string sceneName)
+    {
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            Debug.LogError("Cannot load scene: name is empty.");
+            return false;
+        }
+
+        if (!Application.CanStreamedLevelBeLoaded(sceneName))
+        {
+            Debug.LogError($"Cannot load scene '{sceneName}': not listed in build settings.");
+            return false;
+        }
+
+        SceneManager.LoadScene(sceneName);
+        return true;
+    }
+
+    private void PlayButtonSound()
+    {
+        if (buttonSound != null)
+        {
+            buttonSound.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Button sound AudioSource is not assigned.");
+        }
     }
 }
