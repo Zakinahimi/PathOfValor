@@ -34,6 +34,13 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        // If the timer UI has been removed, disable this behaviour to avoid null references.
+        if (timerText == null)
+        {
+            enabled = false;
+            return;
+        }
+
         // Update the current time based on the count direction
         if (Transition.Alive==true)
         {
@@ -57,6 +64,11 @@ public class Timer : MonoBehaviour
 
     private void SetTimertext()
     {
+        if (timerText == null)
+        {
+            return;
+        }
+
         if (useFormattedTime)
         {
             // Format the current time as hours:minutes:seconds
