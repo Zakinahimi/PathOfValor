@@ -1,4 +1,4 @@
-# The-Midnight-Labyrinth-Game
+# PathOfValor
 This Unity maze game has 5 levels, each with unique design and difficulty that progressively builds upon acquired skills. Players navigate a 2D maze while being chased by an AI bot with limited vision due to a fog of war effect. Achievements based on time and damage were added, targeting puzzle and adventure game enthusiasts.
 
 # Clone and Build Unity Project
@@ -20,14 +20,14 @@ Prerequisites
 # Clone the Unity Project using Git
 
     Open a web browser and navigate to the GitHub repository containing the Unity project you want to clone. 
-    In this case use this link https://github.com/crimsix-7/The-Midnight-Labyrinth-Game.
+    In this case use this link https://github.com/crimsix-7/PathOfValor.
     Open Github Desktop.
     When using Github Desktop Click on 'file' -> 'Clone a repository' -> 'URL' and paste the link.
 
     Or
     
     Open a web browser and navigate to the GitHub repository containing the Unity project you want to clone. 
-    In this case use this link https://github.com/crimsix-7/The-Midnight-Labyrinth-Game 
+    In this case use this link https://github.com/crimsix-7/PathOfValor 
     Click on the "Code" button and copy the URL of the repository.
     Open Git Bash or your preferred Git client and navigate to the directory where you want to clone the project.
     Run the command git clone <repository-url> and wait for the project to finish cloning.
@@ -80,6 +80,6 @@ Prerequisites
 
 
 # Accessing Source Code
-    To access the source code go to the folder "The Midnight Labyrinth" => "Assets" => "SRC"
+    To access the source code go to the folder "PathOfValor" => "Assets" => "SRC"
 
-Congratulations, you are ready to play THE MIDNIGHT LABYRINTH
+Congratulations, you are ready to play PATHOFVALOR
