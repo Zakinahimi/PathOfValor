@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuLogic : MonoBehaviour
 {
-    private GameObject mainMenu;
-    private GameObject optionsMenu;
-    private GameObject extrasMenu;
-    private GameObject highscoreMenu;
-    private GameObject loading;
+    private Canvas mainMenu;
+    private Canvas optionsMenu;
+    private Canvas extrasMenu;
+    private Canvas highscoreMenu;
+    private Canvas loading;
 
     public AudioSource buttonSound;
 
@@ -18,25 +18,25 @@ public class MainMenuLogic : MonoBehaviour
 
     void Start()
     {
-        mainMenu = GameObject.Find("MainMenuCanvas");
-        optionsMenu = GameObject.Find("OptionsCanvas");
-        extrasMenu = GameObject.Find("ExtrasCanvas");
-        loading = GameObject.Find("LoadingCanvas");
-        highscoreMenu = GameObject.Find("HighScoreCanvas");
+        mainMenu = FindCanvas("MainMenuCanvas");
+        optionsMenu = FindCanvas("OptionsCanvas");
+        extrasMenu = FindCanvas("ExtrasCanvas");
+        loading = FindCanvas("LoadingCanvas");
+        highscoreMenu = FindCanvas("HighScoreCanvas");
 
-        mainMenu.GetComponent<Canvas>().enabled = true;
-        optionsMenu.GetComponent<Canvas>().enabled = false;
-        extrasMenu.GetComponent<Canvas>().enabled = false;
-        loading.GetComponent<Canvas>().enabled = false;
-        highscoreMenu.GetComponent<Canvas>().enabled = false;
+        SetCanvasEnabled(mainMenu, true);
+        SetCanvasEnabled(optionsMenu, false);
+        SetCanvasEnabled(extrasMenu, false);
+        SetCanvasEnabled(loading, false);
+        SetCanvasEnabled(highscoreMenu, false);
 
     }
 
     public void StartButton()
     {
-        loading.GetComponent<Canvas>().enabled = true;
-        mainMenu.GetComponent<Canvas>().enabled = false;
-        buttonSound.Play();
+        SetCanvasEnabled(loading, true);
+        SetCanvasEnabled(mainMenu, false);
+        PlayButtonSound();
         SceneManager.LoadScene("Level 1");
 
 
@@ -44,44 +44,79 @@ public class MainMenuLogic : MonoBehaviour
 
     public void OptionsButton()
     {
-        buttonSound.Play();
-        mainMenu.GetComponent<Canvas>().enabled = false;
-        optionsMenu.GetComponent<Canvas>().enabled = true;
+        PlayButtonSound();
+        SetCanvasEnabled(mainMenu, false);
+        SetCanvasEnabled(optionsMenu, true);
     }
 
     public void ExtrasButton()
     {
-        buttonSound.Play();
-        mainMenu.GetComponent<Canvas>().enabled = false;
-        extrasMenu.GetComponent<Canvas>().enabled = true;
+        PlayButtonSound();
+        SetCanvasEnabled(mainMenu, false);
+        SetCanvasEnabled(extrasMenu, true);
     }
 
     public void HighscoreButton()
     {
-        buttonSound.Play();
-        mainMenu.GetComponent <Canvas>().enabled = false;
-        highscoreMenu.GetComponent <Canvas>().enabled = true;
+        PlayButtonSound();
+        SetCanvasEnabled(mainMenu, false);
+        SetCanvasEnabled(highscoreMenu, true);
     }
     public void ExitGameButton()
     {
-        buttonSound.Play();
+        PlayButtonSound();
         Application.Quit();
         Debug.Log("App Has Exited");
     }
 
     public void ReturnToMainMenuButton()
     {
-        buttonSound.Play();
-        mainMenu.GetComponent<Canvas>().enabled = true;
-        optionsMenu.GetComponent<Canvas>().enabled = false;
-        extrasMenu.GetComponent<Canvas>().enabled = false;
-        highscoreMenu.GetComponent<Canvas>().enabled = false;
+        PlayButtonSound();
+        SetCanvasEnabled(mainMenu, true);
+        SetCanvasEnabled(optionsMenu, false);
+        SetCanvasEnabled(extrasMenu, false);
+        SetCanvasEnabled(highscoreMenu, false);
     }
-
-
 
     void Update()
     {
 
+    }
+
+    private Canvas FindCanvas(string objectName)
+    {
+        var target = GameObject.Find(objectName);
+        if (target == null)
+        {
+            Debug.LogWarning($"Canvas object '{objectName}' not found in scene.");
+            return null;
+        }
+
+        var canvas = target.GetComponent<Canvas>();
+        if (canvas == null)
+        {
+            Debug.LogWarning($"GameObject '{objectName}' is missing a Canvas component.");
+        }
+        return canvas;
+    }
+
+    private void SetCanvasEnabled(Canvas canvas, bool enabled)
+    {
+        if (canvas != null)
+        {
+            canvas.enabled = enabled;
+        }
+    }
+
+    private void PlayButtonSound()
+    {
+        if (buttonSound != null)
+        {
+            buttonSound.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Button sound AudioSource is not assigned.");
+        }
     }
 }
