@@ -37,7 +37,7 @@ public class MainMenuLogic : MonoBehaviour
         SetCanvasEnabled(loading, true);
         SetCanvasEnabled(mainMenu, false);
         PlayButtonSound();
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 1ny");
 
 
     }
