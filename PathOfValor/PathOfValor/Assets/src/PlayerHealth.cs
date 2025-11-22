@@ -48,5 +48,12 @@ public class PlayerHealth : MonoBehaviour
 
 
     }
+
+    public void Heal(float amount)
+    {
+        if (amount <= 0) return;
+        int delta = Mathf.CeilToInt(amount);
+        health = Mathf.Clamp(health + delta, 0, maxHealth);
+    }
     
 }
