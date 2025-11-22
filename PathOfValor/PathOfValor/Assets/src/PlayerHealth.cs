@@ -6,13 +6,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Health")]
+    public int maxHealth = 20;
     public int health;
-    public int maxHealth = 3;
     public AudioSource audioPlayer;
     private float delayTime = 1.0f;
     private float timeElapsed;
     public GameObject Player;
     static public bool playerAlive = true;
+
+    [Header("Hit Settings")]
+    [Tooltip("Minimum time in seconds between registering damage hits.")]
+    public float minHitInterval = 0.2f;
+
+    float lastHitTime;
 
     PlayerHandler playerHandler;
     // Start is called before the first frame update
@@ -35,11 +42,23 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(int amount)
     {
+        if (amount <= 0) return;
+
+        // Prevent multiple hits in the same instant so health doesn't drop by many at once.
+        if (Time.time < lastHitTime + minHitInterval) return;
+        lastHitTime = Time.time;
+
         health -= amount;
+        Debug.Log($"Player took {amount} damage, health now: {health}/{maxHealth}");
+
         if(health <= 0)
         {
+            health = 0;
             playerHandler.TriggerDeathAnimation();
-            audioPlayer.Play();
+            if (audioPlayer != null)
+            {
+                audioPlayer.Play();
+            }
             Invoke("changeScene", delayTime);
             
 

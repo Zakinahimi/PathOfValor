@@ -29,13 +29,24 @@ public class Radar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null || ai == null)
+        {
+            // Enemy or player is gone, stop updating radar.
+            enabled = false;
+            return;
+        }
+
         distance = Vector3.Distance(player.transform.position, ai.transform.position);
-        Debug.Log(distance);
         UpdateIconSortingOrder();
     }
 
     private void UpdateIconSortingOrder()
     {
+        if (player == null || ai == null || icon == null)
+        {
+            return;
+        }
+
         float distance = Vector2.Distance(player.transform.position, ai.transform.position);
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
         float switchRate = Mathf.Lerp(1f, 0.1f, 1 - (distance - minDistance) / (maxDistance - minDistance));

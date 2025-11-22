@@ -11,6 +11,11 @@ public class PlayerHandler : MonoBehaviour
     public float slowSpeed = 1f;
     public ContactFilter2D movementFilter;
 
+    [Header("Attack Settings")]
+    public int attackDamage = 1;
+    public float attackRange = 0.75f;
+    public float attackOffset = 0.5f;
+
     bool lockmovement = false;
     Vector2 movementInput;
 
@@ -156,6 +161,8 @@ public class PlayerHandler : MonoBehaviour
 
         attackIndex++;
         if (attackIndex > 3) attackIndex = 1;
+
+        PerformAttack();
     }
 
     public void TriggerDeathAnimation()
@@ -166,5 +173,52 @@ public class PlayerHandler : MonoBehaviour
             animator.SetTrigger("Death");
             animator.SetBool("isDead", true);
         }
+    }
+
+    void PerformAttack()
+    {
+        Vector3 attackPosition = transform.position;
+
+        float direction = 1f;
+        if (spriterenderer != null && spriterenderer.flipX)
+        {
+            direction = -1f;
+        }
+
+        attackPosition += new Vector3(attackOffset * direction, 0f, 0f);
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPosition, attackRange);
+        foreach (Collider2D hit in hits)
+        {
+            if (!hit.CompareTag("Enemy")) continue;
+
+            EnemyHealth enemyHealth = hit.GetComponent<EnemyHealth>();
+            if (enemyHealth == null)
+            {
+                enemyHealth = hit.GetComponentInParent<EnemyHealth>();
+            }
+
+            if (enemyHealth != null)
+            {
+                Vector2 knockDir = ((Vector2)(hit.transform.position - transform.position)).normalized;
+                enemyHealth.TakeDamage(attackDamage, knockDir);
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (!Application.isPlaying) return;
+
+        float direction = 1f;
+        if (spriterenderer != null && spriterenderer.flipX)
+        {
+            direction = -1f;
+        }
+
+        Vector3 attackPosition = transform.position + new Vector3(attackOffset * direction, 0f, 0f);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPosition, attackRange);
     }
 }
