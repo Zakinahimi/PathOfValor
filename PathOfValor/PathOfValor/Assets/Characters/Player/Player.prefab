@@ -229,6 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d4d3334bb843a46aec5509b5d8fcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 3
+  maxHealth: 20
+  health: 20
   audioPlayer: {fileID: 0}
