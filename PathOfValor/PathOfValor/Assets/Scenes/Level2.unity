@@ -87306,10 +87306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d4d3334bb843a46aec5509b5d8fcc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   maxHealth: 3
+  health: 0
   audioPlayer: {fileID: 0}
   Player: {fileID: 0}
+  minHitInterval: 0.2
 --- !u!1 &1011897037
 GameObject:
   m_ObjectHideFlags: 0
@@ -89189,7 +89190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8527718270266881676, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: maxHealth
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8527718270266881676, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: audioPlayer
