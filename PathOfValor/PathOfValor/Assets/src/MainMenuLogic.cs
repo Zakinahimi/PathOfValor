@@ -13,11 +13,21 @@ public class MainMenuLogic : MonoBehaviour
     private Canvas loading;
 
     public AudioSource buttonSound;
+    public AudioSource musicSource;
+    public float musicStartOffsetSeconds = 10f;
+    public float musicFadeInSeconds = 0.2f;
+
+    private static float musicResumeTime = -1f;
+    private static bool musicInitialized = false;
+    private Coroutine musicFadeRoutine;
 
 
 
     void Start()
     {
+        AssignAudioSourcesIfMissing();
+        EnsureMenuMusic();
+
         mainMenu = FindCanvas("MainMenuCanvas");
         optionsMenu = FindCanvas("OptionsCanvas");
         extrasMenu = FindCanvas("ExtrasCanvas");
@@ -83,6 +93,16 @@ public class MainMenuLogic : MonoBehaviour
 
     }
 
+    private void OnDisable()
+    {
+        CacheMusicTime();
+    }
+
+    private void OnDestroy()
+    {
+        CacheMusicTime();
+    }
+
     private Canvas FindCanvas(string objectName)
     {
         var target = GameObject.Find(objectName);
@@ -118,5 +138,101 @@ public class MainMenuLogic : MonoBehaviour
         {
             Debug.LogWarning("Button sound AudioSource is not assigned.");
         }
+    }
+
+    private void EnsureMenuMusic()
+    {
+        if (musicSource == null)
+        {
+            Debug.LogWarning("Menu music AudioSource is not assigned.");
+            return;
+        }
+
+        musicSource.loop = true;
+        musicSource.ignoreListenerPause = true;
+
+        if (musicSource.isPlaying)
+        {
+            return;
+        }
+
+        var clipLength = musicSource.clip != null ? musicSource.clip.length : 0f;
+        var targetTime = musicResumeTime >= 0f ? musicResumeTime : musicStartOffsetSeconds;
+
+        if (clipLength > 0f)
+        {
+            targetTime = Mathf.Min(targetTime, Mathf.Max(0f, clipLength - 0.05f));
+        }
+
+        var targetVolume = musicSource.volume;
+        musicSource.volume = 0f;
+        musicSource.time = targetTime;
+        musicSource.PlayScheduled(AudioSettings.dspTime);
+        musicInitialized = true;
+
+        if (musicFadeRoutine != null)
+        {
+            StopCoroutine(musicFadeRoutine);
+        }
+        musicFadeRoutine = StartCoroutine(FadeInMusic(targetVolume));
+    }
+
+    private void CacheMusicTime()
+    {
+        if (musicSource != null && musicSource.clip != null)
+        {
+            musicResumeTime = musicSource.time;
+        }
+    }
+
+    private void AssignAudioSourcesIfMissing()
+    {
+        if (buttonSound != null && musicSource != null)
+        {
+            return;
+        }
+
+        var sources = GetComponents<AudioSource>();
+        if (sources == null || sources.Length == 0)
+        {
+            return;
+        }
+
+        if (buttonSound == null)
+        {
+            buttonSound = sources[0];
+        }
+
+        if (musicSource == null)
+        {
+            foreach (var source in sources)
+            {
+                if (source != buttonSound)
+                {
+                    musicSource = source;
+                    break;
+                }
+            }
+        }
+    }
+
+    private IEnumerator FadeInMusic(float targetVolume)
+    {
+        if (musicSource == null)
+        {
+            yield break;
+        }
+
+        var duration = Mathf.Max(0.01f, musicFadeInSeconds);
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            var t = Mathf.Clamp01(elapsed / duration);
+            musicSource.volume = Mathf.Lerp(0f, targetVolume, t);
+            yield return null;
+        }
+
+        musicSource.volume = targetVolume;
     }
 }
