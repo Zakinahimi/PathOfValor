@@ -1,10 +1,11 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IHealth
 {
     [Header("Health")]
     public int maxHealth = 20;
@@ -19,10 +20,20 @@ public class PlayerHealth : MonoBehaviour
     [Tooltip("Minimum time in seconds between registering damage hits.")]
     public float minHitInterval = 0.2f;
 
+    [Header("UI")]
+    [Tooltip("Spawn a HUD health bar automatically at runtime.")]
+    public bool spawnHealthBarUI = true;
+
     float lastHitTime;
+    PlayerHealthHUD healthHUD;
 
     PlayerHandler playerHandler;
     Animator animator;
+
+    public float MaxHealth => maxHealth;
+    public float CurrentHealth => health;
+    public event Action<float, float> OnHealthChanged;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +44,13 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         Transition.level = SceneManager.GetActiveScene().name;
         Transition.lvlindex = SceneManager.GetActiveScene().buildIndex;
+        NotifyHealthChanged();
+
+        if (spawnHealthBarUI)
+        {
+            healthHUD = gameObject.AddComponent<PlayerHealthHUD>();
+            healthHUD.Initialize(this);
+        }
     }
 
     // Update is called once per frame
@@ -52,6 +70,7 @@ public class PlayerHealth : MonoBehaviour
 
         health -= amount;
         Debug.Log($"Player took {amount} damage, health now: {health}/{maxHealth}");
+        NotifyHealthChanged();
 
         if (health > 0 && animator != null)
         {
@@ -75,6 +94,12 @@ public class PlayerHealth : MonoBehaviour
         if (amount <= 0) return;
         int delta = Mathf.CeilToInt(amount);
         health = Mathf.Clamp(health + delta, 0, maxHealth);
+        NotifyHealthChanged();
+    }
+
+    void NotifyHealthChanged()
+    {
+        OnHealthChanged?.Invoke(health, maxHealth);
     }
     
 }

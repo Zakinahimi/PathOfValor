@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IHealth
 {
     [Header("Health")]
     public float maxHealth = 3f;
@@ -15,10 +16,20 @@ public class EnemyHealth : MonoBehaviour
     [Header("Knockback")]
     public float knockbackForce = 5f;
 
+    [Header("UI")]
+    [Tooltip("Spawn a floating health bar above this enemy.")]
+    public bool spawnHealthBar = true;
+    public Vector3 healthBarOffset = new Vector3(0f, 0.75f, 0f);
+
     Rigidbody2D rb;
     Animator animator;
     bool isDead;
     float lastHitTime;
+    WorldSpaceHealthBar healthBar;
+
+    public float MaxHealth => maxHealth;
+    public float CurrentHealth => currentHealth;
+    public event Action<float, float> OnHealthChanged;
 
     void Awake()
     {
@@ -27,6 +38,8 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
 
         Debug.Log($"Enemy health start: {currentHealth}/{maxHealth} on {gameObject.name}");
+        NotifyHealthChanged();
+        TrySpawnHealthBar();
     }
 
     public void TakeDamage(float damage, Vector2? knockbackDirection = null)
@@ -44,11 +57,17 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0f)
         {
             currentHealth = 0f;
+            NotifyHealthChanged();
             Die();
         }
         else if (knockbackDirection.HasValue)
         {
             Knockback(knockbackDirection.Value);
+            NotifyHealthChanged();
+        }
+        else
+        {
+            NotifyHealthChanged();
         }
     }
 
@@ -81,5 +100,22 @@ public class EnemyHealth : MonoBehaviour
         }
 
         Destroy(gameObject, delay);
+    }
+
+    void TrySpawnHealthBar()
+    {
+        if (!spawnHealthBar) return;
+
+        if (healthBar == null)
+        {
+            healthBar = gameObject.AddComponent<WorldSpaceHealthBar>();
+        }
+
+        healthBar.Initialize(this, transform, healthBarOffset);
+    }
+
+    void NotifyHealthChanged()
+    {
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 }
