@@ -8,7 +8,8 @@ public class WorldSpaceHealthBar : MonoBehaviour
     [SerializeField] Color backgroundColor = new Color(0f, 0f, 0f, 0.65f);
     [SerializeField] bool hideWhenFull = true;
     [SerializeField] float width = 80f;
-    [SerializeField] float height = 12f;
+    [SerializeField] float height = 3f;
+    [SerializeField] float worldScale = 0.002f; // smaller bars for enemies
 
     IHealth health;
     Transform target;
@@ -76,7 +77,7 @@ public class WorldSpaceHealthBar : MonoBehaviour
 
         RectTransform canvasRect = canvas.GetComponent<RectTransform>();
         canvasRect.sizeDelta = new Vector2(width, height);
-        canvas.transform.localScale = Vector3.one * 0.01f;
+        canvas.transform.localScale = Vector3.one * worldScale;
 
         GameObject sliderGO = new GameObject("HealthBar", typeof(RectTransform), typeof(Slider));
         sliderGO.transform.SetParent(canvas.transform, false);

@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     [Header("UI")]
     [Tooltip("Spawn a floating health bar above this enemy.")]
     public bool spawnHealthBar = true;
-    public Vector3 healthBarOffset = new Vector3(0f, 0.75f, 0f);
+    public Vector3 healthBarOffset = new Vector3(0f, 0.35f, 0f);
 
     Rigidbody2D rb;
     Animator animator;
@@ -106,12 +106,21 @@ public class EnemyHealth : MonoBehaviour, IHealth
     {
         if (!spawnHealthBar) return;
 
+        // Keep the bar close to the head based on sprite bounds when available.
+        Vector3 offset = healthBarOffset;
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr != null)
+        {
+            float top = sr.bounds.extents.y;
+            offset = new Vector3(0f, top + 0.2f, 0f);
+        }
+
         if (healthBar == null)
         {
             healthBar = gameObject.AddComponent<WorldSpaceHealthBar>();
         }
 
-        healthBar.Initialize(this, transform, healthBarOffset);
+        healthBar.Initialize(this, transform, offset);
     }
 
     void NotifyHealthChanged()
