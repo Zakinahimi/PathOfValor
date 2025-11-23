@@ -11,10 +11,13 @@ public class PlayerHandler : MonoBehaviour
     public float slowSpeed = 1f;
     public ContactFilter2D movementFilter;
 
-    [Header("Attack Settings")]
+[Header("Attack Settings")]
     public int attackDamage = 1;
     public float attackRange = 0.75f;
     public float attackOffset = 0.5f;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackClip;
 
     bool lockmovement = false;
     Vector2 movementInput;
@@ -39,6 +42,10 @@ public class PlayerHandler : MonoBehaviour
             spriterenderer = GetComponentInChildren<SpriteRenderer>();
         }
         playerHealth = GetComponent<PlayerHealth>();
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     private void FixedUpdate()
@@ -161,6 +168,11 @@ public class PlayerHandler : MonoBehaviour
 
         attackIndex++;
         if (attackIndex > 3) attackIndex = 1;
+
+        if (audioSource != null && attackClip != null)
+        {
+            audioSource.PlayOneShot(attackClip);
+        }
 
         PerformAttack();
     }
