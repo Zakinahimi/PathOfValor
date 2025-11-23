@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     float lastHitTime;
 
     PlayerHandler playerHandler;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth;
         Transition.Alive = true;
         playerHandler = GetComponent<PlayerHandler>();
+        animator = GetComponent<Animator>();
         Transition.level = SceneManager.GetActiveScene().name;
         Transition.lvlindex = SceneManager.GetActiveScene().buildIndex;
     }
@@ -51,6 +53,11 @@ public class PlayerHealth : MonoBehaviour
         health -= amount;
         Debug.Log($"Player took {amount} damage, health now: {health}/{maxHealth}");
 
+        if (health > 0 && animator != null)
+        {
+            animator.SetTrigger("Hurt"); // HeroKnight controller expects this trigger.
+        }
+
         if(health <= 0)
         {
             health = 0;
@@ -60,12 +67,7 @@ public class PlayerHealth : MonoBehaviour
                 audioPlayer.Play();
             }
             Invoke("changeScene", delayTime);
-            
-
-
         }
-
-
     }
 
     public void Heal(float amount)
