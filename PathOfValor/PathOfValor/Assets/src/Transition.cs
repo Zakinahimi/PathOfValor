@@ -16,7 +16,7 @@ public class Transition : MonoBehaviour
     public static bool Alive ;
     public static string level;
     public static int lvlindex;
-    private static readonly string[] LevelOrder = { "Level1", "Level2", "Level3", "Level4" };
+    private static readonly string[] LevelOrder = { "Level1", "Level2", "Level3", "Level4", "Level5" };
     // Start is called before the first frame update
     void Start()
     {
