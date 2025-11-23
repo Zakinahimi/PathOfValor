@@ -33787,6 +33787,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7971257519908643813, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7971257519908643813, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: collisionOffset
       value: 0
       objectReference: {fileID: 0}
