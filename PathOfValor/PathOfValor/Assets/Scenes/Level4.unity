@@ -1980,11 +1980,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3889706383728865527, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: m_Size.x
-      value: 0.093148336
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -3889706383728865527, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: -3889706383728865527, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: m_Offset.x
-      value: -0.00409057
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -3889706383728865527, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 192519503622653039, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: m_Controller
@@ -2055,8 +2063,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5336785641905239329, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
-      propertyPath: m_CollisionDetection
+      propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336785641905239329, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336785641905239329, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336785641905239329, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336785641905239329, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8527718270266881676, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: maxHealth
