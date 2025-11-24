@@ -15780,6 +15780,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 0}
   Player: {fileID: 0}
   minHitInterval: 0.2
+  spawnHealthBarUI: 1
 --- !u!1001 &961753988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33790,6 +33791,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -7971257519908643813, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
+      propertyPath: attackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c8bd67b4a27e2694e96b6ff4b3f90533, type: 3}
     - target: {fileID: -7971257519908643813, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
       propertyPath: collisionOffset
       value: 0
