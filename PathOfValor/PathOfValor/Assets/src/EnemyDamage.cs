@@ -9,17 +9,53 @@ public class EnemyDamage : MonoBehaviour
     public PlayerHealth playerHealth;
     public int damage = 1;
 
+    Animator animator;
+    int attackRightStateHash;
+    int attackLeftStateHash;
+    bool hasDirectionalAttackStates;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+
+        if (animator != null)
+        {
+            attackRightStateHash = Animator.StringToHash("Base Layer.Attack_right");
+            attackLeftStateHash = Animator.StringToHash("Base Layer.Attack_left");
+
+            hasDirectionalAttackStates =
+                animator.HasState(0, attackRightStateHash) &&
+                animator.HasState(0, attackLeftStateHash);
+        }
+    }
+
     private void DealDamageIfPlayer(GameObject obj)
     {
         if (!obj.CompareTag("Player")) return;
 
         playerHealth.TakeDamage(damage);
         Debug.Log("Hit");
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+        if (animator != null)
+        {
+            if (hasDirectionalAttackStates)
+            {
+                bool playerOnRight = true;
+
+                if (playerHealth != null)
+                {
+                    playerOnRight = playerHealth.transform.position.x >= transform.position.x;
+                }
+
+                int stateHash = playerOnRight ? attackRightStateHash : attackLeftStateHash;
+                animator.Play(stateHash, 0);
+            }
+            else
+            {
+                // Fallback for enemies that only har en generisk Attack‑trigger.
+                animator.SetTrigger("Attack");
+            }
+        }
     }
 
     // This class gives damage when enemy collides with the enemy.
