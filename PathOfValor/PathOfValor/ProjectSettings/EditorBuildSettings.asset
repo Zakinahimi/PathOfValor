@@ -30,3 +30,4 @@ EditorBuildSettings:
     path: Assets/Scenes/deathAnimation.unity
     guid: b918d3b52792e694a84fb39277780a99
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
