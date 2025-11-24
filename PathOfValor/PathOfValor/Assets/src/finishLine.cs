@@ -13,8 +13,8 @@ public class finishLine : MonoBehaviour
         {
             Debug.Log("Hooray!!! You Won!");
             Transition.Alive = true;
-            SceneManager.LoadScene("Game");
-            Debug.Log("MainMenu");
+            SceneManager.LoadScene("Level2");
+            Debug.Log("Loading Level2");
         }
     }
 }
