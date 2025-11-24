@@ -30,6 +30,7 @@ public class PlayerHandler : MonoBehaviour
     int attackIndex = 1;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    CameraAttachment cameraAttachment;
 
     void Start()
     {
@@ -45,6 +46,21 @@ public class PlayerHandler : MonoBehaviour
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
+        }
+
+        cameraAttachment = FindObjectOfType<CameraAttachment>();
+        if (cameraAttachment == null)
+        {
+            Camera mainCam = Camera.main;
+            if (mainCam != null)
+            {
+                cameraAttachment = mainCam.gameObject.AddComponent<CameraAttachment>();
+            }
+        }
+
+        if (cameraAttachment != null)
+        {
+            cameraAttachment.player = gameObject;
         }
     }
 
@@ -202,19 +218,16 @@ public class PlayerHandler : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPosition, attackRange);
         foreach (Collider2D hit in hits)
         {
-            if (!hit.CompareTag("Enemy")) continue;
-
             EnemyHealth enemyHealth = hit.GetComponent<EnemyHealth>();
             if (enemyHealth == null)
             {
                 enemyHealth = hit.GetComponentInParent<EnemyHealth>();
             }
 
-            if (enemyHealth != null)
-            {
-                Vector2 knockDir = ((Vector2)(hit.transform.position - transform.position)).normalized;
-                enemyHealth.TakeDamage(attackDamage, knockDir);
-            }
+            if (enemyHealth == null) continue;
+
+            Vector2 knockDir = ((Vector2)(hit.transform.position - transform.position)).normalized;
+            enemyHealth.TakeDamage(attackDamage, knockDir);
         }
     }
 
