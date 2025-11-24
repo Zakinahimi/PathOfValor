@@ -19,13 +19,25 @@ public class Tile : MonoBehaviour
 	void Start () 
 	{
 		// obtain the local references
-		playerTransform = GameObject.Find("PlayerCharacter").transform;
+		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		if (player == null) player = GameObject.Find("Player");
+		if (player == null) player = GameObject.Find("PlayerCharacter");
+		if (player != null)
+		{
+			playerTransform = player.transform;
+		}
+		else
+		{
+			Debug.LogError("Tile could not find a player in the scene. Tag the player as 'Player' or name it 'Player'.");
+		}
+
 		spriteRenderer = this.GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		if (playerTransform == null || spriteRenderer == null) return;
 
 		// to ensure correct positioning of the environment around the player (3D Depth Effect)
 		// we need to make the tiles below the player higher than the player in the render layering

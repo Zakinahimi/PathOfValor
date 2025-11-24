@@ -33,12 +33,37 @@ public class CameraFollow : MonoBehaviour
 
 	void Start()
 	{
+		// if not wired in the inspector, try to grab the player automatically by tag/name
+		if (PlayerCharacter == null)
+		{
+			GameObject found = GameObject.FindGameObjectWithTag("Player");
+			if (found == null)
+			{
+				found = GameObject.Find("Player");
+			}
+			if (found == null)
+			{
+				found = GameObject.Find("PlayerCharacter");
+			}
+			PlayerCharacter = found;
+		}
+
 		// get the players transform
-		PlayerTransform = PlayerCharacter.transform;
+		if (PlayerCharacter != null)
+		{
+			PlayerTransform = PlayerCharacter.transform;
+		}
+		else
+		{
+			Debug.LogError("CameraFollow could not find a player to follow. Please assign PlayerCharacter in the inspector or tag your player as 'Player'.");
+			enabled = false;
+		}
 	}
 	
 	void Update ()
 	{
+		if (PlayerTransform == null) return;
+
 		// By default the target x and y coordinates of the camera are it's current x and y coordinates.
 		Vector2 target = new Vector2(transform.position.x, transform.position.y);
 		
