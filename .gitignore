@@ -1,0 +1,63 @@
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Bb]uild/
+[Bb]uilds/
+[Uu]ser[Ss]ettings/
+[Aa]ssets/AssetStoreTools*
+sysinfo.txt
+
+# Local builds / players (do not commit)
+*.apk
+*.aab
+*.unitypackage
+*.unityPackage
+*.app
+*.exe
+*.x86
+*.x86_64
+*_Data/
+*_BackUpThisFolder_ButDontShipItWithYourGame/
+*_BurstDebugInformation_DoNotShip/
+MonoBleedingEdge/
+UnityPlayer.dll
+
+# IDE / editor
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.sln*
+*.unityproj
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity layout / user prefs
+*.dwlt
+*.wlt
+PathOfValor/PathOfValor/UserSettings/*
+
+# Gradle and other caches
+.gradle/
+ExportedObj/
+.consulo/
+
+# JetBrains Rider
+[Aa]ssets/Plugins/Editor/JetBrains*
