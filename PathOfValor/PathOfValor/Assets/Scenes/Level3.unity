@@ -7386,6 +7386,82 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &168297400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168297401}
+  - component: {fileID: 168297403}
+  - component: {fileID: 168297402}
+  m_Layer: 5
+  m_Name: Red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &168297401
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168297400}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.999, y: 0.999, z: 0.999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2044336679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -686, y: -462}
+  m_SizeDelta: {x: 490, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &168297402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168297400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9622642, g: 0.0090778135, b: 0.0090778135, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -5311616824756427503, guid: cbf4632849a25ce40ae409ceb3d927d9,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &168297403
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168297400}
+  m_CullTransparentMesh: 1
 --- !u!1 &239835507
 GameObject:
   m_ObjectHideFlags: 0
@@ -91427,45 +91503,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae9beeac3b22298498cfef2da00a4101, type: 3}
---- !u!114 &2132337878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662510421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
-  goodPotions:
-  - {fileID: 1512141875650200, guid: 1fa8700a96d2e504bad5db18817837c3, type: 3}
-  - {fileID: 1263817564182546, guid: 26b0959d5401bec4aa428915333e3aa9, type: 3}
-  badPotions:
-  - {fileID: 1290710940995914, guid: 49d6974d80f53684b8ff6875580ea1bb, type: 3}
-  - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
-  - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
-  badPotionChance: 0.7
-  dropOffset: {x: 0, y: 0.25, z: 0}
---- !u!114 &2132337879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662510421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 0
-  minHitInterval: 0.2
-  knockbackForce: 5
-  spawnHealthBar: 0
-  healthBarOffset: {x: 0, y: 0.35, z: 0}
 --- !u!1001 &2655193569945289994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93019,4 +93056,3 @@ SceneRoots:
   - {fileID: 46310293}
   - {fileID: 85799857}
   - {fileID: 865486347}
-  - {fileID: 40508814}
