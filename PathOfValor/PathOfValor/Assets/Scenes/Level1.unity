@@ -1933,6 +1933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39d3d432bfcf6f42815e8e0283a01fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallbackSceneAfterFinal: Main Menu
 --- !u!50 &107392599
 Rigidbody2D:
   serializedVersion: 5
@@ -20400,6 +20401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: audioPlayer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527718270266881676, guid: 5ae1ec7442f79034c8a92a79f67bb925,
+        type: 3}
+      propertyPath: spawnHealthBarUI
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8546730018512876902, guid: 5ae1ec7442f79034c8a92a79f67bb925, type: 3}
