@@ -3,31 +3,42 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-	public PlayerHealth playerHealth;
-	public Image fillImage;         // peg på dit "Health" image
-	public Text valueText;          // valgfri
+    public PlayerHealth playerHealth;
+    public Image fillImage;         // Drag dit "Health" Image her
+    public Text valueText;          // Valgfri tekstvisning
 
-	void Start()
-	{
-		if (playerHealth == null)
-			playerHealth = FindObjectOfType<PlayerHealth>();
+    void Start()
+    {
+        if (playerHealth == null)
+            playerHealth = FindObjectOfType<PlayerHealth>();
 
-		UpdateBar(playerHealth.CurrentHealth, playerHealth.MaxHealth);
-		playerHealth.OnHealthChanged += UpdateBar;
-	}
+        // Sikr korrekt fill-opsÃ¦tning selv efter merge/prefab overrides.
+        if (fillImage != null)
+        {
+            fillImage.type = Image.Type.Filled;
+            fillImage.fillMethod = Image.FillMethod.Horizontal;
+            fillImage.fillOrigin = 0;
+        }
 
-	void OnDestroy()
-	{
-		if (playerHealth != null)
-			playerHealth.OnHealthChanged -= UpdateBar;
-	}
+        if (playerHealth != null)
+        {
+            UpdateBar(playerHealth.CurrentHealth, playerHealth.MaxHealth);
+            playerHealth.OnHealthChanged += UpdateBar;
+        }
+    }
 
-	void UpdateBar(float current, float max)
-	{
-		if (fillImage != null && max > 0f)
-			fillImage.fillAmount = current / max;
+    void OnDestroy()
+    {
+        if (playerHealth != null)
+            playerHealth.OnHealthChanged -= UpdateBar;
+    }
 
-		if (valueText != null)
-			valueText.text = $"{Mathf.CeilToInt(current)}/{Mathf.CeilToInt(max)}";
-	}
+    void UpdateBar(float current, float max)
+    {
+        if (fillImage != null && max > 0f)
+            fillImage.fillAmount = current / max;
+
+        if (valueText != null)
+            valueText.text = $"{Mathf.CeilToInt(current)}/{Mathf.CeilToInt(max)}";
+    }
 }
