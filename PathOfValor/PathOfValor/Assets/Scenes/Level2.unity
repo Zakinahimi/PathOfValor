@@ -205276,6 +205276,7 @@ GameObject:
   - component: {fileID: 880477986}
   - component: {fileID: 880477985}
   - component: {fileID: 880477984}
+  - component: {fileID: 880477995}
   m_Layer: 0
   m_Name: Minotaur - Sprite Sheet_0 (7)
   m_TagString: Untagged
@@ -205582,6 +205583,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880477995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880477983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
+  goodPotions: []
+  badPotions: []
+  badPotionChance: 0.6
+  dropOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &928347918
 GameObject:
   m_ObjectHideFlags: 0
@@ -205601,6 +205618,7 @@ GameObject:
   - component: {fileID: 928347921}
   - component: {fileID: 928347920}
   - component: {fileID: 928347919}
+  - component: {fileID: 928347930}
   m_Layer: 0
   m_Name: Minotaur - Sprite Sheet_0 (6)
   m_TagString: Untagged
@@ -205907,6 +205925,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &928347930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928347918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
+  goodPotions:
+  - {fileID: 1512141875650200, guid: 1fa8700a96d2e504bad5db18817837c3, type: 3}
+  - {fileID: 1263817564182546, guid: 26b0959d5401bec4aa428915333e3aa9, type: 3}
+  badPotions:
+  - {fileID: 1290710940995914, guid: 49d6974d80f53684b8ff6875580ea1bb, type: 3}
+  - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
+  - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
+  badPotionChance: 0.7
+  dropOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &930114651
 GameObject:
   m_ObjectHideFlags: 0
@@ -206703,6 +206742,7 @@ GameObject:
   - component: {fileID: 1422268321}
   - component: {fileID: 1422268320}
   - component: {fileID: 1422268319}
+  - component: {fileID: 1422268330}
   m_Layer: 0
   m_Name: Minotaur - Sprite Sheet_0 (3)
   m_TagString: Untagged
@@ -207009,6 +207049,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1422268330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422268318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
+  goodPotions:
+  - {fileID: 1512141875650200, guid: 1fa8700a96d2e504bad5db18817837c3, type: 3}
+  - {fileID: 1263817564182546, guid: 26b0959d5401bec4aa428915333e3aa9, type: 3}
+  badPotions:
+  - {fileID: 1290710940995914, guid: 49d6974d80f53684b8ff6875580ea1bb, type: 3}
+  - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
+  - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
+  badPotionChance: 0.7
+  dropOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1493302953
 GameObject:
   m_ObjectHideFlags: 0
@@ -207155,6 +207216,7 @@ GameObject:
   - component: {fileID: 1544468611}
   - component: {fileID: 1544468610}
   - component: {fileID: 1544468609}
+  - component: {fileID: 1544468620}
   m_Layer: 0
   m_Name: Minotaur - Sprite Sheet_0 (10)
   m_TagString: Untagged
@@ -207461,6 +207523,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1544468620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544468608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
+  goodPotions:
+  - {fileID: 1512141875650200, guid: 1fa8700a96d2e504bad5db18817837c3, type: 3}
+  - {fileID: 1263817564182546, guid: 26b0959d5401bec4aa428915333e3aa9, type: 3}
+  badPotions:
+  - {fileID: 1290710940995914, guid: 49d6974d80f53684b8ff6875580ea1bb, type: 3}
+  - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
+  - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
+  badPotionChance: 0.7
+  dropOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1752700370
 GameObject:
   m_ObjectHideFlags: 0
@@ -207884,6 +207967,7 @@ GameObject:
   - component: {fileID: 1857048577}
   - component: {fileID: 1857048576}
   - component: {fileID: 1857048575}
+  - component: {fileID: 1857048586}
   m_Layer: 0
   m_Name: Minotaur - Sprite Sheet_0 (11)
   m_TagString: Untagged
@@ -208190,6 +208274,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1857048586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857048574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
+  goodPotions:
+  - {fileID: 1512141875650200, guid: 1fa8700a96d2e504bad5db18817837c3, type: 3}
+  - {fileID: 1263817564182546, guid: 26b0959d5401bec4aa428915333e3aa9, type: 3}
+  badPotions:
+  - {fileID: 1290710940995914, guid: 49d6974d80f53684b8ff6875580ea1bb, type: 3}
+  - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
+  - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
+  badPotionChance: 0.7
+  dropOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1896007828
 GameObject:
   m_ObjectHideFlags: 0
