@@ -205598,7 +205598,7 @@ MonoBehaviour:
   goodPotions: []
   badPotions: []
   badPotionChance: 0.6
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: 4, z: 0}
 --- !u!1 &928347918
 GameObject:
   m_ObjectHideFlags: 0
@@ -205945,7 +205945,7 @@ MonoBehaviour:
   - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
   - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
   badPotionChance: 0.7
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 2, y: 0, z: 0}
 --- !u!1 &930114651
 GameObject:
   m_ObjectHideFlags: 0
@@ -207069,7 +207069,7 @@ MonoBehaviour:
   - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
   - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
   badPotionChance: 0.7
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 0, y: 2, z: 0}
 --- !u!1 &1493302953
 GameObject:
   m_ObjectHideFlags: 0
@@ -207543,7 +207543,7 @@ MonoBehaviour:
   - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
   - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
   badPotionChance: 0.7
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 2, y: 0, z: 0}
 --- !u!1 &1752700370
 GameObject:
   m_ObjectHideFlags: 0
@@ -208294,7 +208294,7 @@ MonoBehaviour:
   - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
   - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
   badPotionChance: 0.7
-  dropOffset: {x: 0, y: 0, z: 0}
+  dropOffset: {x: 2, y: 0, z: 0}
 --- !u!1 &1896007828
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class PlayerHandler : MonoBehaviour
     SpriteRenderer spriterenderer;
     Rigidbody2D rb;
     PlayerHealth playerHealth;
+    PlayerPotionEffects potionEffects;
 
     Animator animator;
     int attackIndex = 1;
@@ -43,6 +44,7 @@ public class PlayerHandler : MonoBehaviour
             spriterenderer = GetComponentInChildren<SpriteRenderer>();
         }
         playerHealth = GetComponent<PlayerHealth>();
+        potionEffects = GetComponent<PlayerPotionEffects>();
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -144,11 +146,11 @@ public class PlayerHandler : MonoBehaviour
                 direction,
                 movementFilter,
                 castCollisions,
-                moveSpeed * Time.fixedDeltaTime + collisionOffset);
+                GetMoveSpeed() * Time.fixedDeltaTime + collisionOffset);
 
             if (count == 0)
             {
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + direction * GetMoveSpeed() * Time.fixedDeltaTime);
                 return true;
             }
             else
@@ -227,7 +229,7 @@ public class PlayerHandler : MonoBehaviour
             if (enemyHealth == null) continue;
 
             Vector2 knockDir = ((Vector2)(hit.transform.position - transform.position)).normalized;
-            enemyHealth.TakeDamage(attackDamage, knockDir);
+            enemyHealth.TakeDamage(GetAttackDamage(), knockDir);
         }
     }
 
@@ -245,5 +247,17 @@ public class PlayerHandler : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPosition, attackRange);
+    }
+
+    float GetMoveSpeed()
+    {
+        float modifier = potionEffects != null ? potionEffects.MoveSpeedMultiplier : 1f;
+        return moveSpeed * modifier;
+    }
+
+    int GetAttackDamage()
+    {
+        float modifier = potionEffects != null ? potionEffects.AttackDamageMultiplier : 1f;
+        return Mathf.Max(1, Mathf.RoundToInt(attackDamage * modifier));
     }
 }
