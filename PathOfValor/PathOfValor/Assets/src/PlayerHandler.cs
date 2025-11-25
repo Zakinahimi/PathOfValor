@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerHandler : MonoBehaviour
 {
@@ -11,13 +12,19 @@ public class PlayerHandler : MonoBehaviour
     public float slowSpeed = 1f;
     public ContactFilter2D movementFilter;
 
-[Header("Attack Settings")]
+    [Header("Attack Settings")]
     public int attackDamage = 1;
     public float attackRange = 0.75f;
     public float attackOffset = 0.5f;
+
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip attackClip;
+
+    [Header("Fireball Settings (Level 4)")]
+    public GameObject fireballPrefab;
+    public float fireballCooldown = 0.5f;
+    public int fireballDamage = 1;
 
     bool lockmovement = false;
     Vector2 movementInput;
@@ -32,6 +39,8 @@ public class PlayerHandler : MonoBehaviour
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     CameraAttachment cameraAttachment;
+
+    float lastFireballTime;
 
     void Start()
     {
@@ -63,6 +72,17 @@ public class PlayerHandler : MonoBehaviour
         if (cameraAttachment != null)
         {
             cameraAttachment.player = gameObject;
+        }
+    }
+
+    void Update()
+    {
+        // Højre klik → kast fireball, kun i Level4
+        if (Mouse.current != null &&
+            Mouse.current.rightButton.wasPressedThisFrame &&
+            IsInLevel4())
+        {
+            TryCastFireball();
         }
     }
 
@@ -247,6 +267,34 @@ public class PlayerHandler : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPosition, attackRange);
+    }
+
+    void TryCastFireball()
+    {
+        if (fireballPrefab == null) return;
+        if (Time.time < lastFireballTime + fireballCooldown) return;
+        lastFireballTime = Time.time;
+
+        float direction = 1f;
+        if (spriterenderer != null && spriterenderer.flipX)
+        {
+            direction = -1f;
+        }
+
+        Vector3 spawnPos = transform.position + new Vector3(attackOffset * direction, 0f, 0f);
+        GameObject fireballObj = Instantiate(fireballPrefab, spawnPos, Quaternion.identity);
+
+        FireballProjectile proj = fireballObj.GetComponent<FireballProjectile>();
+        if (proj != null)
+        {
+            proj.damage = Mathf.Max(1, fireballDamage);
+            proj.Initialize(new Vector2(direction, 0f));
+        }
+    }
+
+    bool IsInLevel4()
+    {
+        return SceneManager.GetActiveScene().name == "Level4";
     }
 
     float GetMoveSpeed()

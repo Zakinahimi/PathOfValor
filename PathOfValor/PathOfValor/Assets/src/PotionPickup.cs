@@ -38,6 +38,12 @@ public class PotionPickup : MonoBehaviour
     [Tooltip("Optional SFX on pickup.")]
     public AudioClip pickupSfx;
 
+    [Header("Message")]
+    public bool showMessageOnPickup = false;
+    [TextArea]
+    public string pickupMessage = "You have activated a new power!";
+    public float messageDuration = 3f;
+
     AudioSource audioSource;
 
     void Awake()
@@ -70,6 +76,12 @@ public class PotionPickup : MonoBehaviour
                 audioSource = gameObject.AddComponent<AudioSource>();
             }
             audioSource.PlayOneShot(pickupSfx);
+        }
+
+        // NYT: vis besked
+        if (showMessageOnPickup && SimpleMessageUI.Instance != null)
+        {
+            SimpleMessageUI.Instance.Show(pickupMessage, messageDuration);
         }
 
         if (destroyOnPickup)

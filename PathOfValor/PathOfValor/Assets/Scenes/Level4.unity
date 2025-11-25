@@ -35341,6 +35341,12 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: c8bd67b4a27e2694e96b6ff4b3f90533, type: 3}
     - target: {fileID: -7971257519908643813, guid: 5ae1ec7442f79034c8a92a79f67bb925,
         type: 3}
+      propertyPath: fireballPrefab
+      value: 
+      objectReference: {fileID: 2086238026209682860, guid: 2ea8d08f386434444947c7860fc84095,
+        type: 3}
+    - target: {fileID: -7971257519908643813, guid: 5ae1ec7442f79034c8a92a79f67bb925,
+        type: 3}
       propertyPath: collisionOffset
       value: 0
       objectReference: {fileID: 0}
