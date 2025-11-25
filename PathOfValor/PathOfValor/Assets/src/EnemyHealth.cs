@@ -30,6 +30,7 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public float MaxHealth => maxHealth;
     public float CurrentHealth => currentHealth;
     public event Action<float, float> OnHealthChanged;
+    public event Action OnDied;
 
     void Awake()
     {
@@ -88,6 +89,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
         {
             animator.SetTrigger("Die");
         }
+
+        OnDied?.Invoke();
 
         float delay = 0.25f;
         if (animator != null)
