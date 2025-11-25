@@ -7725,8 +7725,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -204997,8 +204997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -205322,8 +205322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -205647,8 +205647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -206153,8 +206153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -206460,6 +206460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39d3d432bfcf6f42815e8e0283a01fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallbackSceneAfterFinal: Main Menu
 --- !u!50 &1034065131
 Rigidbody2D:
   serializedVersion: 5
@@ -206748,8 +206749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -207200,8 +207201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -207604,8 +207605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
@@ -207929,8 +207930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 6
+  currentHealth: 6
   minHitInterval: 0.2
   knockbackForce: 5
   spawnHealthBar: 1
