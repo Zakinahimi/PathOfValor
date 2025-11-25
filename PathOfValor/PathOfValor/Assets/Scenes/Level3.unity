@@ -356,6 +356,57 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &40508812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 40508814}
+  - component: {fileID: 40508813}
+  m_Layer: 0
+  m_Name: SpawnPoint_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &40508813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40508812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008505359c29f4effadd05a0b487733e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProximitySpawner
+  enemyPrefab: {fileID: 1469114765}
+  spawnCount: 11
+  spawnSpreadRadius: 2
+  parentForSpawns: {fileID: 0}
+  triggerRadius: 2
+  spawnOnlyOnce: 1
+  retriggerDelay: 8
+--- !u!4 &40508814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40508812}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &46310293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1031,6 +1082,14 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2815593231266682481, guid: 84f1170c980f39440b0d9f286f9ec404,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1262483224}
+    - targetCorrespondingSourceObject: {fileID: 2815593231266682481, guid: 84f1170c980f39440b0d9f286f9ec404,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1262483223}
     - targetCorrespondingSourceObject: {fileID: 2815593231802769283, guid: 84f1170c980f39440b0d9f286f9ec404,
         type: 3}
       insertIndex: -1
@@ -89232,6 +89291,14 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2815593231266682481, guid: 84f1170c980f39440b0d9f286f9ec404,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1469114767}
+    - targetCorrespondingSourceObject: {fileID: 2815593231266682481, guid: 84f1170c980f39440b0d9f286f9ec404,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1469114766}
     - targetCorrespondingSourceObject: {fileID: 2815593231802769283, guid: 84f1170c980f39440b0d9f286f9ec404,
         type: 3}
       insertIndex: -1
@@ -90392,6 +90459,49 @@ SpriteMask:
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
   m_MaskSource: 0
+--- !u!1 &1262483221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2815593231266682481, guid: 84f1170c980f39440b0d9f286f9ec404,
+    type: 3}
+  m_PrefabInstance: {fileID: 119449035}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1262483223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262483221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
+  goodPotions: []
+  badPotions:
+  - {fileID: 1290710940995914, guid: 49d6974d80f53684b8ff6875580ea1bb, type: 3}
+  - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
+  - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
+  badPotionChance: 0.7
+  dropOffset: {x: 0, y: 0.25, z: 0}
+--- !u!114 &1262483224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262483221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 3
+  currentHealth: 0
+  minHitInterval: 0.2
+  knockbackForce: 5
+  spawnHealthBar: 0
+  healthBarOffset: {x: 0, y: 0.35, z: 0}
 --- !u!1 &1347801023
 GameObject:
   m_ObjectHideFlags: 0
@@ -90570,6 +90680,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1469114765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2815593231266682481, guid: 84f1170c980f39440b0d9f286f9ec404,
+    type: 3}
+  m_PrefabInstance: {fileID: 824540196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1469114766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469114765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8980c7fad1741a98e01f796c988413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotionDropper
+  goodPotions:
+  - {fileID: 1512141875650200, guid: 1fa8700a96d2e504bad5db18817837c3, type: 3}
+  - {fileID: 1263817564182546, guid: 26b0959d5401bec4aa428915333e3aa9, type: 3}
+  badPotions:
+  - {fileID: 1290710940995914, guid: 49d6974d80f53684b8ff6875580ea1bb, type: 3}
+  - {fileID: 1453754709234996, guid: e190daebd6004dd45ae1353fd7ae3547, type: 3}
+  - {fileID: 1529846681483794, guid: 9c7853c94cd577e4db16ef531dc7c2fd, type: 3}
+  badPotionChance: 0.7
+  dropOffset: {x: 0, y: 0.25, z: 0}
+--- !u!114 &1469114767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469114765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da591d01f1d748cab88c5e598130ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 3
+  currentHealth: 0
+  minHitInterval: 0.2
+  knockbackForce: 5
+  spawnHealthBar: 0
+  healthBarOffset: {x: 0, y: 0.35, z: 0}
 --- !u!1 &1493302953
 GameObject:
   m_ObjectHideFlags: 0
@@ -93212,5 +93367,4 @@ SceneRoots:
   - {fileID: 46310293}
   - {fileID: 85799857}
   - {fileID: 865486347}
-  - {fileID: 960978828}
-  - {fileID: 1752831766}
+  - {fileID: 40508814}

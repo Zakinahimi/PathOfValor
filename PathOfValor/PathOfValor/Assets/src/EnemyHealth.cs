@@ -17,8 +17,8 @@ public class EnemyHealth : MonoBehaviour, IHealth
     public float knockbackForce = 5f;
 
     [Header("UI")]
-    [Tooltip("Spawn a floating health bar above this enemy.")]
-    public bool spawnHealthBar = true;
+    [Tooltip("Spawn a floating health bar above this enemy (disabled by default).")]
+    public bool spawnHealthBar = false;
     public Vector3 healthBarOffset = new Vector3(0f, 0.35f, 0f);
 
     Rigidbody2D rb;
@@ -40,7 +40,6 @@ public class EnemyHealth : MonoBehaviour, IHealth
 
         Debug.Log($"Enemy health start: {currentHealth}/{maxHealth} on {gameObject.name}");
         NotifyHealthChanged();
-        TrySpawnHealthBar();
     }
 
     public void TakeDamage(float damage, Vector2? knockbackDirection = null)
@@ -118,9 +117,21 @@ public class EnemyHealth : MonoBehaviour, IHealth
             offset = new Vector3(0f, top + 0.2f, 0f);
         }
 
+        // Grab any existing bar before trying to add a new one (DisallowMultipleComponent).
+        if (healthBar == null)
+        {
+            healthBar = GetComponent<WorldSpaceHealthBar>();
+        }
+
         if (healthBar == null)
         {
             healthBar = gameObject.AddComponent<WorldSpaceHealthBar>();
+        }
+
+        if (healthBar == null)
+        {
+            Debug.LogWarning($"Failed to attach WorldSpaceHealthBar to {gameObject.name}");
+            return;
         }
 
         healthBar.Initialize(this, transform, offset);
