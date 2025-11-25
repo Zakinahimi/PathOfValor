@@ -118,9 +118,21 @@ public class EnemyHealth : MonoBehaviour, IHealth
             offset = new Vector3(0f, top + 0.2f, 0f);
         }
 
+        // Grab any existing bar before trying to add a new one (DisallowMultipleComponent).
+        if (healthBar == null)
+        {
+            healthBar = GetComponent<WorldSpaceHealthBar>();
+        }
+
         if (healthBar == null)
         {
             healthBar = gameObject.AddComponent<WorldSpaceHealthBar>();
+        }
+
+        if (healthBar == null)
+        {
+            Debug.LogWarning($"Failed to attach WorldSpaceHealthBar to {gameObject.name}");
+            return;
         }
 
         healthBar.Initialize(this, transform, offset);
