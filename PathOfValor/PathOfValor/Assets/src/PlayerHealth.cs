@@ -21,8 +21,8 @@ public class PlayerHealth : MonoBehaviour, IHealth
     public float minHitInterval = 0.2f;
 
     [Header("UI")]
-    [Tooltip("Spawn a HUD health bar automatically at runtime.")]
-    public bool spawnHealthBarUI = true;
+    [Tooltip("Spawn a HUD health bar automatically at runtime (disabled by default).")]
+    public bool spawnHealthBarUI = false;
 
     float lastHitTime;
     PlayerHealthHUD healthHUD;
@@ -46,11 +46,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
         Transition.lvlindex = SceneManager.GetActiveScene().buildIndex;
         NotifyHealthChanged();
 
-        if (spawnHealthBarUI)
-        {
-            healthHUD = gameObject.AddComponent<PlayerHealthHUD>();
-            healthHUD.Initialize(this);
-        }
+        // HUD health bar intentionally disabled.
     }
 
     // Update is called once per frame
