@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 public class PlayerHealthHUD : MonoBehaviour
 {
-    [SerializeField] Vector2 anchoredPosition = new Vector2(32f, -32f);
+    [SerializeField] Vector2 anchoredPosition = new Vector2(32f, 32f);
     [SerializeField] Vector2 size = new Vector2(220f, 22f);
     [SerializeField] Color fillColor = new Color(0.84f, 0.2f, 0.2f, 1f);
     [SerializeField] Color backgroundColor = new Color(0f, 0f, 0f, 0.65f);
@@ -40,9 +40,9 @@ public class PlayerHealthHUD : MonoBehaviour
 
         RectTransform rect = slider.GetComponent<RectTransform>();
         rect.sizeDelta = size;
-        rect.anchorMin = new Vector2(0f, 1f);
-        rect.anchorMax = new Vector2(0f, 1f);
-        rect.pivot = new Vector2(0f, 1f);
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.zero;
+        rect.pivot = Vector2.zero;
         rect.anchoredPosition = anchoredPosition;
 
         Sprite bgSprite = GetDefaultSprite();
@@ -109,6 +109,8 @@ public class PlayerHealthHUD : MonoBehaviour
         CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
         scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920f, 1080f);
+        scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+        scaler.matchWidthOrHeight = 0.5f;
 
         canvasGO.AddComponent<GraphicRaycaster>();
 
