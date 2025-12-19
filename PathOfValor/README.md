@@ -1,85 +1,124 @@
-# PathOfValor
-This Unity maze game has 5 levels, each with unique design and difficulty that progressively builds upon acquired skills. Players navigate a 2D maze while being chased by an AI bot with limited vision due to a fog of war effect. Achievements based on time and damage were added, targeting puzzle and adventure game enthusiasts.
+# 1. Cover page
+**Path of Valor**
 
-# Clone and Build Unity Project
+**Course Report**
 
-This is a step-by-step guide on how to clone a Unity project from GitHub to your local computer and build it to generate an executable. 
+**Team:** Path of Valor Development Team
 
-Use this if the game does not play from the Zip Folder attachment.
+**Date:** 2024
 
-Prerequisites
+---
 
-    Unity Hub installed on your computer.
-    Unity version used to create the project installed on your computer.
-    Git/Github Desktop installed on your computer
-    Here is an additional video explaining the process of accessing the files from git
-    https://youtu.be/pNUdu-6ZNBg  
+# 2. Story/Game Summary
+In the village of Brighthollow, a farmer named Eldric lives a quiet life with his son, Cassius. One night, the dark sorcerer Malrik the Obsessor strikes and kidnaps Cassius, daring Eldric to follow. Eldric enters a series of dangerous labyrinths that grow darker and more twisted as he approaches Malrik’s stronghold. Each labyrinth tests his resolve and awakens new powers within him. The journey ends in Malrik’s throne labyrinth, where Eldric unleashes Hero’s Will to defeat the sorcerer and bring his son home.
 
-    
+---
 
-# Clone the Unity Project using Git
+# 3. Character(s) and Controls
+**Playable Character: Eldric**
+- A farmer turned hero who fights to rescue his son.
 
-    Open a web browser and navigate to the GitHub repository containing the Unity project you want to clone. 
-    In this case use this link https://github.com/crimsix-7/PathOfValor.
-    Open Github Desktop.
-    When using Github Desktop Click on 'file' -> 'Clone a repository' -> 'URL' and paste the link.
+**Main Antagonist: Malrik the Obsessor**
+- A jealous mage consumed by obsession, now ruling the labyrinths with shadow magic.
 
-    Or
-    
-    Open a web browser and navigate to the GitHub repository containing the Unity project you want to clone. 
-    In this case use this link https://github.com/crimsix-7/PathOfValor 
-    Click on the "Code" button and copy the URL of the repository.
-    Open Git Bash or your preferred Git client and navigate to the directory where you want to clone the project.
-    Run the command git clone <repository-url> and wait for the project to finish cloning.
+**Supporting Character: Cassius**
+- Eldric’s son, seen in memories and visions that inspire him to keep moving forward.
 
-# Open the Project in Unity
+**Controls (Maze Gameplay):**
+- Move: WASD / Arrow Keys
+- Sprint: Shift (consumes stamina)
+- Use Ability: E
+- Interact with Objects: F
+- Pause: Esc
 
-    Open Unity Hub and click on the "Projects" tab.
-    Click on the "Add" button and navigate to the directory where you cloned the Unity project.
-    Select the project folder and click on the "Open" button.
-    Wait for Unity to finish importing the project.
+---
 
-# Build the Project
+# 4. Gameplay Concepts
+- **Labyrinth Navigation:** Each level is a maze that requires exploration, memory, and pathfinding.
+- **Fog of War:** Limited visibility adds tension and forces careful navigation.
+- **Pursuit Pressure:** An enemy AI roams the labyrinth, pushing players to keep moving.
+- **Progression:** Each new labyrinth introduces a fresh mechanic and a new ability for Eldric.
 
-    Click on the "File" menu and select "Build Settings".
-    In the "Build Settings" window, select the platform you want to build the executable for.
-    Click on the "Add Open Scenes" button to add all scenes in the project to the build.
-    For Our purposes, make sure Scene0 has index 0 and SampleScene has index 1
-    Click on the "Build" button and select the directory where you want to save the executable.
-    Wait for Unity to finish building the project.
+---
 
-# Run the Executable
+# 5. Game World
+**World Structure:**
+The game is a 2D labyrinth adventure with five interconnected maze levels. Each labyrinth is themed and visually distinct, reflecting Eldric’s growing strength and Malrik’s influence.
 
-    Navigate to the directory where you saved the executable.
-    Double-click on the executable ending with .exe or Apple File System to run it.
-    Test the executable to ensure it runs correctly.
-# What to Expect (Interim Demo).
-    
-    
-    Sound Effects: Players can expect sound effects when they die, which will be an electronic buzz.
+**What Players Find:**
+- Branching corridors, locked gates, and puzzle paths.
+- Hints and story fragments that guide Eldric forward.
+- Item pickups and hazards that influence survival and speed.
 
-    Special Items: Players will have access to a special item (Potion) that will boost their speed and another item (Blue line) that will remove the speed boost.           Implemeting the special items usecase.
+**How the World Ties to the Story:**
+The labyrinths symbolize Eldric’s inner struggle. The deeper he goes, the more threatening the world becomes, mirroring his climb from farmer to hero.
 
-    AI Bot: The game will feature an AI bot that will chase the player, using a pathfinding algorithm. This usecase is implemented such that AI bot avoids obstacles to     reach the Player within the shortest distance possible.
+---
 
-    Player Maneuverability: Players will be able to navigate through a maze, using various maneuvers to evade the AI bot and reach their goals. 
-     The game's mechanics will allow players to avoid the AI bot QUite smoothly.
-    
-# What to Expect (Final Demo).
-    All the usecase proposed in the the final demo in the project proposal have been applied.
-    
-    Achievement indicator: Achievement Indicator based on time.
+# 6. Gestalt
+**End-to-End Experience:**
+Players begin in a calm maze outside Brighthollow and gradually move into darker, more complex labyrinths. The experience grows from cautious exploration into urgent escape and confrontation.
 
-    Radar Indicator: Radar indication showcasing presence of enemy.
+**Emotions and Mood:**
+- Start: Safety and determination.
+- Middle: Tension, fear, and urgency.
+- End: Triumph and relief.
 
-    All 5 levels built.
+**Music and Sound:**
+Ambient sounds guide exploration, while intense sound cues signal danger when the enemy is nearby.
 
-    Special Items and traps added.
+**Cutscenes and Unique Moments:**
+Short story scenes show Cassius’s memories and Eldric’s resolve between labyrinths. Each new ability is introduced through a small maze puzzle challenge.
 
-    Design principles implemented.
+---
 
+# 7. Interface
+- **HUD:** Shows health, stamina, and ability cooldown.
+- **Mini-Map/Radar:** Limited radar indicates nearby threats without giving full maze visibility.
+- **Achievement Indicators:** Time-based achievements appear after completing labyrinths.
+- **Menus:** Clear start, pause, and level completion screens.
 
-# Accessing Source Code
-    To access the source code go to the folder "PathOfValor" => "Assets" => "SRC"
+---
 
-Congratulations, you are ready to play PATHOFVALOR
+# 8. Enemies
+**Maze Guardians (per level):**
+- Level 1: Bandit Stalkers (basic melee pursuers).
+- Level 2: Shadow Wolves (fast and aggressive hunters).
+- Level 3: Stone Golems (slow blockers that guard paths).
+- Level 4: Dark Archers (ranged threats in narrow corridors).
+- Level 5: Obsidian Knights and Malrik himself.
+
+**Enemy Uniqueness:**
+Each enemy type is tailored to the maze theme and the ability Eldric gains in that level, forcing players to adapt their navigation and timing.
+
+---
+
+# 9. Bonus
+- **Replayability:** Players can replay labyrinths with all abilities unlocked to improve times and unlock achievements.
+- **Speedrun Paths:** Optional riskier routes reward faster completion.
+- **No Multiplayer:** The experience is intentionally focused on single-player tension and immersion.
+
+---
+
+# 10. Money
+- **One-Time Purchase:** Full game access with no ads or paywalls.
+- **No Pay-to-Win:** Progress is earned entirely through gameplay.
+- **Optional DLC Concept:** Potential bonus labyrinths or story expansions, but not required to enjoy the main game.
+
+---
+
+# 11. Deviations from plan
+Originally, the concept emphasized open exploration and combat arenas. As development progressed, the focus shifted to labyrinth gameplay with maze navigation, fog of war, and pursuit mechanics. This created a more focused and tense experience that better matched the project scope and team strengths.
+
+---
+
+# 12. Challenges to overcome
+- Building AI pathfinding that felt fair but still threatening in tight maze spaces.
+- Designing five unique labyrinths without repeating layouts or pacing.
+- Balancing fog of war to create tension without frustrating players.
+- Ensuring progression and abilities felt meaningful in a maze-focused game.
+
+---
+
+# 13. Reflection on the course and your experience̦
+This project taught us how to scope a game around achievable mechanics while still delivering a strong narrative. The labyrinth focus pushed us to think about pacing, visibility, and player tension in a way we had not done before. As a team, we learned to iterate quickly, adapt to changes, and prioritize features that created the strongest player experience.
